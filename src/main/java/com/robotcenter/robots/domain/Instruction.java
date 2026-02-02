@@ -1,6 +1,4 @@
-package com.robotcenter.robots.domain.entities;
-
-import com.robotcenter.robots.domain.enums.CommandType;
+package com.robotcenter.robots.domain;
 
 /**
  * Representa una orden procesada y validad destinada a un robot específico.

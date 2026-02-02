@@ -1,9 +1,9 @@
-package com.robotcenter.robots.handlers;
+package com.robotcenter.robots.server;
 
-import com.robotcenter.robots.components.InstructionBox;
-import com.robotcenter.robots.components.InstructionParser;
-import com.robotcenter.robots.domain.entities.Instruction;
-import com.robotcenter.robots.domain.enums.CommandType;
+import com.robotcenter.robots.core.InstructionBox;
+import com.robotcenter.robots.core.InstructionParser;
+import com.robotcenter.robots.domain.Instruction;
+import com.robotcenter.robots.domain.CommandType;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,7 +1,7 @@
-package com.robotcenter.robots.components;
+package com.robotcenter.robots.core;
 
-import com.robotcenter.robots.domain.entities.Instruction;
-import com.robotcenter.robots.domain.enums.CommandType;
+import com.robotcenter.robots.domain.Instruction;
+import com.robotcenter.robots.domain.CommandType;
 import org.springframework.stereotype.Component;
 
 /**

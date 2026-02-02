@@ -1,8 +1,7 @@
-package com.robotcenter.robots.services;
+package com.robotcenter.robots.server;
 
-import com.robotcenter.robots.components.InstructionBox;
-import com.robotcenter.robots.components.InstructionParser;
-import com.robotcenter.robots.handlers.ClientHandler;
+import com.robotcenter.robots.core.InstructionBox;
+import com.robotcenter.robots.core.InstructionParser;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
 
@@ -39,16 +38,17 @@ public class RobotServer implements CommandLineRunner {
      */
     @Override
     public void run(String... args) throws Exception {
-        // Hilo principal del servidor de sockets.
-        try (ServerSocket serverSocket = new ServerSocket(port)) {
-            System.out.println("Servidor iniciado en puerto " + port);
-            while (!Thread.currentThread().isInterrupted()) {
-                Socket clientSocket = serverSocket.accept();
-                // Cada cliente es gestionado por un hilo.
-                new Thread(new ClientHandler(clientSocket, instructionBox, parser)).start();
+        // Lanzamos en un nuevo hilo para no bloquear el inicio de la aplicación
+        new Thread(() -> {
+            try (ServerSocket serverSocket = new ServerSocket(port)) {
+                System.out.println("Servidor iniciado en puerto " + port);
+                while (!Thread.currentThread().isInterrupted()) {
+                    Socket clientSocket = serverSocket.accept();
+                    new Thread(new ClientHandler(clientSocket, instructionBox, parser)).start();
+                }
+            } catch (IOException ex) {
+                System.err.println("Cierre del servidor: " + ex.getMessage());
             }
-        } catch (IOException ex) {
-            System.err.println("Error en el servidor: " + ex.getMessage());
-        }
+        }, "ServerSocket-Thread").start();
     }
 }

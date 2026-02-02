@@ -1,4 +1,4 @@
-package com.robotcenter.robots.domain.enums;
+package com.robotcenter.robots.domain;
 
 /**
  * Define el conjunto de comandos válidos que el sistema puede procesar.

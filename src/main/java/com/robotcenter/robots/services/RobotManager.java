@@ -1,7 +1,7 @@
 package com.robotcenter.robots.services;
 
-import com.robotcenter.robots.components.InstructionBox;
-import com.robotcenter.robots.domain.entities.Robot;
+import com.robotcenter.robots.core.InstructionBox;
+import com.robotcenter.robots.robots.Robot;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;

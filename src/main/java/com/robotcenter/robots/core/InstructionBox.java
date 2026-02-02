@@ -1,6 +1,6 @@
-package com.robotcenter.robots.components;
+package com.robotcenter.robots.core;
 
-import com.robotcenter.robots.domain.entities.Instruction;
+import com.robotcenter.robots.domain.Instruction;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

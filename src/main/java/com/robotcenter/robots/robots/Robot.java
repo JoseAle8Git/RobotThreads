@@ -1,6 +1,7 @@
-package com.robotcenter.robots.domain.entities;
+package com.robotcenter.robots.robots;
 
-import com.robotcenter.robots.components.InstructionBox;
+import com.robotcenter.robots.core.InstructionBox;
+import com.robotcenter.robots.domain.Instruction;
 
 /**
  * Representa un hilo de ejecución independiente para un robot de la fábrica.
