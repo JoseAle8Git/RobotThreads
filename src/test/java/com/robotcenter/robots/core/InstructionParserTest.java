@@ -11,12 +11,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
- * Tests para validar el correcto funcionamiento del parser de mensajes.
+ * Clase de pruebas unitarias para el componente {@link InstructionParser}.
+ * Valida que el protocolo de comunicación "ROBOT_ID | COMANDO | PARAMS" sea procesado correctamente y que se lancen excepciones
+ * ante formatos mal formados.
  */
 public class InstructionParserTest {
 
     private final InstructionParser parser = new InstructionParser();
 
+    /** Verifica que la línea con formato válido sea convertida correctamente en un objeto {@link Instruction} con sus
+     * campos mapeados.
+     */
     @Test
     @DisplayName("Debe parsear correctamente una línea válida")
     void testParserValidLine() {
@@ -26,6 +31,12 @@ public class InstructionParserTest {
         assertEquals("10", result.params());
     }
 
+    /**
+     * Prueba parametrizada que valida la robustez del parser ante diversas entradas inválidas (IDs no numéricos, comandos
+     * inexistentes o formatos incompletos).
+     * Asegura que el servidor pueda responder con "ERROR" ante basura.
+     * @param input Cadena de texto mal formada para testear la resistencia del parser.
+     */
     @ParameterizedTest
     @ValueSource(strings = {
             "X | MOVE | 10",    // ID no numérico

@@ -1,0 +1,7 @@
+com.robotcenter.robots
+com.robotcenter.robots.core
+com.robotcenter.robots.domain
+com.robotcenter.robots.integration
+com.robotcenter.robots.robots
+com.robotcenter.robots.server
+com.robotcenter.robots.services

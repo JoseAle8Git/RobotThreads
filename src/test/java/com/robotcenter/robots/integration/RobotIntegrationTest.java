@@ -11,6 +11,11 @@ import java.net.Socket;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * Prueba de integración del sistema de control de robots.
+ * Levanta el contexto de Spring Boot y realiza una comunicación real a través de sockets TCP para validar el flujo completo:
+ * Cliente -> Servidor -> Parser -> Buzón.
+ */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 public class RobotIntegrationTest {
 

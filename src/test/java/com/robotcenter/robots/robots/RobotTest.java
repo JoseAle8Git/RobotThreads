@@ -14,11 +14,17 @@ import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.Mockito.*;
 
 /**
- * Test unitario para la lógica del Robot.
- * Verifica que el robot solicite instrucciones para su ID y finalice correctamente.
+ * Test unitario para la lógica de ejecución de la clase {@link Robot}.
+ * Utiliza Mockito para simular el comportamiento del buzón y verificar que el robot cumpla con su bucle de vida: solicitar
+ * órdenes y detenerse ante el shutdown.
  */
 public class RobotTest {
 
+    /**
+     * Verifica que el robot solicite instrucciones al buzón usando exclusivamente su propio ID, cumpliendo con la
+     * restricción de consumo selectivo.
+     * @throws InterruptedException
+     */
     @Test
     @DisplayName("El robot debe solicitar instrucciones específicas para su ID al buzón")
     void testRobotAsksForCorrectId() throws InterruptedException {
@@ -40,6 +46,11 @@ public class RobotTest {
         verify(mockBox, never()).takeFor(argThat(id -> id != robotId));
     }
 
+    /**
+     * Valida el mecanismo de parada limpia. Asegura que el hilo del robot finalice su ejecución de forma inmediata cuando
+     * el buzón devuelve una señal de apagado.
+     * @throws InterruptedException
+     */
     @Test
     @DisplayName("El robot debe finalizar el hilo si el buzón devuelve null (Shutdown)")
     void testRobotStopsOnShutdown() throws InterruptedException {
